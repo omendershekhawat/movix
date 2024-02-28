@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import{BrowserRouter, Routes, Route} from "react-router-dom"
-import { fetchDataFromApi } from './utils/api'
-import { useDispatch, useSelector } from 'react-redux'
-import { getApiConfiguration } from './store/homeSlice'
-import Header from './components/header/Header'
-import  Footer  from './components/footer/Footer'
-import Home from './pages/home/Home'
-import Details from './pages/details/details'
-import Explore from './pages/explore/explore'
-import PagesNotFound from './pages/404/PagesNotFound'
-import Searchresult from './pages/searchResult/SearchResult'
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { fetchDataFromApi } from "./utils/api";
 
+import { useSelector, useDispatch } from "react-redux";
+import { getApiConfiguration, getGenres } from "./store/homeSlice";
+
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import Home from "./pages/home/Home";
+import Details from "./pages/details/Details";
+import SearchResult from "./pages/searchResult/SearchResult";
+import Explore from "./pages/explore/explore";
+import PageNotFound from "./pages/404/PagesNotFound";
 
 function App() {
     const dispatch = useDispatch();
@@ -61,9 +61,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/:mediaType/:id" element={<Details />} />
-                <Route path="/search/:query" element={<searchResult />} />
+                <Route path="/search/:query" element={<SearchResult />} />
                 <Route path="/explore/:mediaType" element={<Explore />} />
-                <Route path="*" element={<PagesNotFound />} />
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
             <Footer />
         </BrowserRouter>
@@ -71,6 +71,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
